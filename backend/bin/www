@@ -4,9 +4,9 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+const app = require('../app');
 const debug = require('debug');
-var http = require('http');
+const http = require('http');
 const mongoose = require('mongoose');
 const { mongoURI: db } = require('../config/keys.js');
 
@@ -30,6 +30,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
+mongoose.set('strictQuery', true);
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
